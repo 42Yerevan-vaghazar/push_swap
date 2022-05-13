@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate_stack.c                             :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 19:45:01 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/13 19:24:26 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/05/13 14:53:21 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/05/13 19:25:27 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    reverse_rotate_stack(t_list **lst, char *str)
+int rr(t_list **stack_a, t_list **stack_b)
 {
-	t_list  *tmp;
+    rotate_stack(stack_a, "rr");
+    rotate_stack(stack_b, "rr");
+    return (1);
+}
 
-	if (!lst || !(*lst) || !(*lst) -> next)
-		return (0);
-	tmp = *lst;
-	while ((*lst) -> next -> next)
-		*lst = (*lst) -> next;
-	(*lst) -> next -> next = tmp;
-	tmp = (*lst) -> next;
-	(*lst) -> next = NULL;
-	*lst = tmp;
-	ft_printf("%s\n", str);
-	return (1);
+int rrr(t_list **stack_a, t_list **stack_b)
+{
+    reverse_rotate_stack(stack_a, "rrr");
+    reverse_rotate_stack(stack_b, "rrr");
+    return (1);
 }

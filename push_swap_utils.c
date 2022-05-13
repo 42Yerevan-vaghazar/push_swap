@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 12:20:35 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/08 17:15:54 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:44:23 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void    ft_print_list(t_list *lst)
 		return ;
 	while (lst)
 	{
-		printf("i = %d  ", lst -> index);
-		printf("%d ,", lst -> data);
+		ft_printf("|i = %d # ", lst -> index);
+		ft_printf("%d |", lst -> data);
 		lst = lst -> next;
 	}
-	printf("\n-----------------\n");
+	ft_printf("\n-----------------\n");
 }
 
 void	set_index(t_list **stack)

@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:17:53 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/01 10:47:07 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:46:25 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int    push_first_sec(t_list **a, t_list **b)
     *a = (*a) -> next;
 	tmp -> next = *b;
     (*b) = tmp;
-    return (2);
+    return (1);
 }

@@ -6,13 +6,13 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:40:09 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/01 10:36:24 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:24:12 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    rotate_stack(t_list **lst)
+int    rotate_stack(t_list **lst, char	*str)
 {
 	t_list  *tmp;
 
@@ -21,5 +21,6 @@ int    rotate_stack(t_list **lst)
 	tmp = *lst;
 	*lst = (*lst) -> next;
 	ft_lstadd_back(&(*lst), tmp);
+	ft_printf("%s\n", str);
 	return (1);
 }
