@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:18:59 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/13 19:38:56 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:12:03 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int swap_a(t_list **a)
     tmp = (*a) -> data;
     (*a) -> data = (*a) -> next -> data;
     (*a) -> next -> data = tmp;
-    ft_printf("sa\n");
+    // ft_printf("sa\n");
     return (1);
 }

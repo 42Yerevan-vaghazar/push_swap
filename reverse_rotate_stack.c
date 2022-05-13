@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:45:01 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/13 19:24:26 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:12:42 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int    reverse_rotate_stack(t_list **lst, char *str)
 {
 	t_list  *tmp;
+	(void)str;
 
 	if (!lst || !(*lst) || !(*lst) -> next)
 		return (0);
@@ -25,6 +26,6 @@ int    reverse_rotate_stack(t_list **lst, char *str)
 	tmp = (*lst) -> next;
 	(*lst) -> next = NULL;
 	*lst = tmp;
-	ft_printf("%s\n", str);
+	// ft_printf("%s\n", str);
 	return (1);
 }
