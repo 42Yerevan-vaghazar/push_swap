@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:26:21 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/13 20:28:49 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:43:39 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,16 @@ int	sort_stack(t_list **stack_a, t_list **stack_b)
 	while (1)
 	{
 		start_lst = *stack_a;
+		// while (*stack_a)
+		// {
+		// 	if((*stack_a)-> index == 18)
+		// 		ft_printf("test a = %d\n", (*stack_a)-> data);
+		// 	(*stack_a) = (*stack_a) -> next;
+		// }
+		*stack_a = start_lst;
 		if (count > tab[i][1])
 			i++;
 		index = get_index_for_push(*stack_a, tab, i);
-		ft_printf("check\n");
 		ft_printf("index = %d\n", index);
 		stack_size = ft_lstsize(*stack_a);
 		while ((*stack_a))
@@ -76,12 +82,36 @@ int	sort_stack(t_list **stack_a, t_list **stack_b)
 		count_step += push_first_sec(stack_a, stack_b);
 		stack_size -= 1;
 		count++;
+	start_lst = *stack_a;
+	while (*stack_a)
+	{
+		if((*stack_a)-> index == 18)
+			ft_printf("test a = %d\n", (*stack_a)-> data);
+		(*stack_a) = (*stack_a) -> next;
+	}
+	*stack_a = start_lst;
 		if (stack_size == 2)
 			sort_stack_up(stack_a);
+	start_lst = *stack_a;
+	while (*stack_a)
+	{
+		if((*stack_a)-> index == 18)
+			ft_printf("test a = %d\n", (*stack_a)-> data);
+		(*stack_a) = (*stack_a) -> next;
+	}
+	*stack_a = start_lst;
 		if (is_growth_sequence(*stack_a)) 
 			break;
 	}
 	i = 0;
+	start_lst = *stack_a;
+	while (*stack_a)
+	{
+		if((*stack_a)-> index == 18)
+			ft_printf("test a = %d\n", (*stack_a)-> data);
+		(*stack_a) = (*stack_a) -> next;
+	}
+	*stack_a = start_lst;
 	ft_printf("count_step = %d\n", count_step);
 	while (*stack_b)
 		sort_stack_a_by_index(stack_a, stack_b, i++, &count_step);
@@ -95,7 +125,6 @@ int	get_index_for_push(t_list *stack, int **tab, int count)
 	int	i;
 	var	targets;
 	targets = get_targets(stack, tab, count);
-	ft_printf("stugum\n");
 	targets.stack_size = ft_lstsize(stack);
 	targets.nums[0] = targets.stack_size - ft_lstsize(targets.target[0]);
 	targets.nums[1] = ft_lstsize(targets.target[1]);
@@ -135,15 +164,15 @@ int	**create_chunk(t_list *stack)
 	}
 	tab[i][0] = start_chunk;
 	tab[i][1] = stack_size - 3;;
-	int j = 0;
-	i = -1;
-	while (tab[++i])
-	{
-		j = 0; 
-		while (j < 2)
-			printf("tab = %d\n", tab[i][j++]);
-		// printf("i = %d\n", i);
-	}
+	// int j = 0;
+	// i = -1;
+	// while (tab[++i])
+	// {
+	// 	j = 0; 
+	// 	while (j < 2)
+	// 		printf("tab = %d\n", tab[i][j++]);
+	// 	// printf("i = %d\n", i);
+	// }
 	return (tab);
 }
 
@@ -158,7 +187,7 @@ var get_targets(t_list	*stack, int	**tab, int i)
 	{
 		if (stack->index >= tab[i][0] && stack->index <= tab[i][1])
 			break;
-	ft_printf("hajox\n");
+	// ft_printf("hajox\n");
 		stack = stack->next;
 	}
 	target.target[0] = stack;
@@ -171,6 +200,38 @@ var get_targets(t_list	*stack, int	**tab, int i)
 	}
 	stack = start_stack;
 	return(target);
+}
+
+void	set_index(t_list **stack)
+{
+	t_list	*min_num;
+	t_list	*start_lst;
+	int		i;
+	int		stack_size;
+	int		bool;
+
+	start_lst = *stack;
+	i = 0;
+	bool = 1;
+	stack_size = ft_lstsize(*stack);
+	while (i < stack_size)
+	{
+		bool = 1;
+		*stack = start_lst;
+		min_num = *stack;
+		while (*stack)
+		{
+			if ((bool && (*stack) -> index == -1)
+				|| ((min_num -> data > (*stack) -> data) && (*stack) -> index == -1))
+			{
+				min_num = *stack;
+				bool = 0;
+			}
+			*stack = (*stack) -> next;
+		}
+		min_num -> index = i++;
+	}
+	*stack = start_lst;
 }
 
 int main(int ac, char **av)
@@ -203,7 +264,7 @@ int main(int ac, char **av)
 	ft_print_list(start_a);
 	
 	steps += sort_stack(&start_a, &stack_b);
-	// printf("stack_a\n");
-	// ft_print_list(start_a);
+	printf("stack_a\n");
+	ft_print_list(start_a);
 	ft_printf("steps = %d\n", steps);
 }

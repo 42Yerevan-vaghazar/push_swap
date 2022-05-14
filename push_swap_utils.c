@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 12:20:35 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/13 19:44:23 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:10:17 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,37 +40,37 @@ void    ft_print_list(t_list *lst)
 	ft_printf("\n-----------------\n");
 }
 
-void	set_index(t_list **stack)
-{
-	t_list	*min_num;
-	t_list	*start_lst;
-	int		i;
-	int		stack_size;
-	int		bool;
+// void	set_index(t_list **stack)
+// {
+// 	t_list	*min_num;
+// 	t_list	*start_lst;
+// 	int		i;
+// 	int		stack_size;
+// 	int		bool;
 
-	start_lst = *stack;
-	i = 0;
-	bool = 1;
-	stack_size = ft_lstsize(*stack);
-	while (i < stack_size)
-	{
-		bool = 1;
-		*stack = start_lst;
-		min_num = *stack;
-		while (*stack)
-		{
-			if ((min_num -> index != -1 && bool && (*stack) -> index == -1)
-				|| ((min_num -> data > (*stack) -> data) && (*stack) -> index == -1))
-			{
-				min_num = *stack;
-				bool = 0;
-			}
-			*stack = (*stack) -> next;
-		}
-		min_num -> index = i++;
-	}
-	*stack = start_lst;
-}
+// 	start_lst = *stack;
+// 	i = 0;
+// 	bool = 1;
+// 	stack_size = ft_lstsize(*stack);
+// 	while (i < stack_size)
+// 	{
+// 		bool = 1;
+// 		*stack = start_lst;
+// 		min_num = *stack;
+// 		while (*stack)
+// 		{
+// 			if ((/*min_num -> index != -1 &&*/ bool && (*stack) -> index == -1)
+// 				|| ((min_num -> data > (*stack) -> data) && (*stack) -> index == -1))
+// 			{
+// 				min_num = *stack;
+// 				bool = 0;
+// 			}
+// 			*stack = (*stack) -> next;
+// 		}
+// 		min_num -> index = i++;
+// 	}
+// 	*stack = start_lst;
+// }
 
 int	sort_stack_up(t_list	**stack)
 {
