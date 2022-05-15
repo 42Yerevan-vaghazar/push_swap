@@ -19,7 +19,7 @@ int sort_stack_a_by_index(t_list **stack_a,t_list **stack_b, int index, int *cou
     t_list  *start_lst;
     int min_size;
     (void)index;
-	
+
     start_lst = *stack_b;
     stack_b_size = ft_lstsize(*stack_b);
     min_num = *stack_b;
@@ -37,6 +37,6 @@ int sort_stack_a_by_index(t_list **stack_a,t_list **stack_b, int index, int *cou
 	else
 		while (*stack_b && (*stack_b) -> data != min_num -> data)
 			*count_step += reverse_rotate_stack(stack_b, "rb");
-    *count_step += push_first_sec(stack_b, stack_a);
+    *count_step += push_first_sec(stack_b, stack_a, 'a');
     return (*count_step);
 }

@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:40:09 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/14 14:02:03 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:48:05 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int    rotate_stack(t_list **lst, char	*str)
 	tmp = *lst;
 	*lst = (*lst) -> next;
 	ft_lstadd_back(&(*lst), tmp);
-	ft_printf("%s\n", str);
+	if (str)
+		ft_printf("%s\n", str);
 	return (1);
 }

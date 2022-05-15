@@ -3,3 +3,6 @@
 a.out
 .vscode
 *.dSYM
+*.log
+.DS_Store
+push_swap_tester/

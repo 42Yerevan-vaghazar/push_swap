@@ -1,10 +1,12 @@
-NAME = push_swap.a
+NAME = push_swap
 
 CC	=	cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 SRCS = $(wildcard *.c)
+
+LIBS = $(wildcard *.a)
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
@@ -15,8 +17,7 @@ AR = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS) 
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(LIBS) $(OBJS) -o $(NAME)
 	
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
@@ -29,4 +30,3 @@ re:	fclean all
 bonus:	all
 
 .PHONY: all clean fclean re bonus
-
