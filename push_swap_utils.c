@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 12:20:35 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/21 13:01:54 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/21 20:17:04 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,18 @@ int	sort_stack_up(t_list	**stack)
 	return (count_step);
 }
 
-int	**create_chunk(t_list *stack)
+int	**create_chunk(t_list *stack, int divide)
 {
 	int		stack_size;
 	int		range_chunk;
 	int		**tab;
 	int		start_chunk;
 	int		i;
-	int		divide;
 	
 	if (!stack)
 		return (0);
 	// ft_printf("create_chunk\n");
 	stack_size = ft_lstsize(stack);
-	divide = stack_size * 5 / 100;
-	divide = 5;
 	range_chunk = stack_size / divide;
 	tab = malloc(sizeof(int *) * (divide + 1));
 	start_chunk = 0;
@@ -77,7 +74,7 @@ int	**create_chunk(t_list *stack)
 		tab[i++] = (int *)malloc(sizeof(int) * 2);
 	tab[i] = NULL;
 	i = 0;
-	while (tab[i + 1] != NULL)
+	while (tab[i + 1] != NULL && ((start_chunk + range_chunk) < stack_size - 3))
 	{
 		tab[i][0] = start_chunk;
 		tab[i][1] = start_chunk + range_chunk;
@@ -86,7 +83,6 @@ int	**create_chunk(t_list *stack)
 	}
 	tab[i][1] = stack_size - 3;;
 	tab[i][0] = start_chunk;
-	// ft_printf("barev\n");
 	// int j = 0;
 	// i = -1;
 	// while (tab[++i])
@@ -107,7 +103,6 @@ void	set_index(t_list **stack)
 	int		i;
 	int		stack_size;
 	int		boolean;
-	// ft_printf("set_index\n");
 	start_lst = *stack;
 	while (*stack)
 	{
@@ -136,43 +131,7 @@ void	set_index(t_list **stack)
 		min_num -> index = i++;
 	}
 	*stack = start_lst;
-	// ft_printf("set_index\n");
 }
-
-// var get_targets(t_list	*stack, int	**tab, int i)
-// {
-// 	t_list	*start_stack;
-// 	var		target;
-// 	// ft_printf("get_targets\n");
-// 	// ft_printf("test targets.target[0] =%p\n", target.target[0]);
-// 	// ft_printf("test targets.target[1] =%p\n", target.target[1]);
-// 	start_stack = stack;
-// 	// ft_printf("stack = %d\n", stack->next->index);
-// 	while (stack -> next)
-// 	{
-// 		// ft_printf("tab[i]= %p , %p \n", &tab[i][0], &tab[i][1]);
-// 		// ft_printf("barev\n");
-// 		// ft_printf("test targets.target[0] =%p\n", target.target[0]);
-// 		// ft_printf("test targets.target[1] =%p\n", target.target[1]);
-// 		// ft_printf("stack = %d\n", stack->index);
-// 		if (stack->index >= tab[i][0] && stack->index <= tab[i][1])
-// 			break;
-// 	// ft_printf("barev\n");
-// 		stack = stack->next;
-// 	}
-// 	target.target[0] = stack;
-// 	stack = start_stack;
-// 	target.target[1] = stack;
-// 	while (stack -> next)
-// 	{
-// 		if(stack->index >= tab[i][0] && stack->index <= tab[i][1])
-// 			target.target[1] = stack;
-// 		stack = stack->next;
-// 	}
-// 	stack = start_stack;
-// 	// ft_printf("get_targets\n");
-// 	return(target);
-// }
 
 t_list	*get_index_for_push(t_list *stack, int **tab, int count)
 {

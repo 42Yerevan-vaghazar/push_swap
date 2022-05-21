@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 12:32:41 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/11 21:48:53 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/03/24 20:42:06 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/05/21 17:48:30 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+t_list	*ft_lstnew(int data)
 {
-	int	i;
+	t_list	*ptr;
 
-	i = 0;
-	if (!lst)
+	ptr = malloc(sizeof(ptr));
+	if (!ptr)
 		return (0);
-	while (lst -> next)
-	{
-		lst = lst -> next;
-		i++;
-	}
-	return (++i);
+	ptr -> data = data;
+	ptr -> next = NULL;
+	return (ptr);
 }

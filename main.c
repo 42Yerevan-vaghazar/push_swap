@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:26:21 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/21 13:01:31 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/21 20:48:23 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,102 +38,20 @@ var get_targets(t_list	*stack, int	**tab, int i)
 	return(target);
 }
 
-int	sort_stack(t_list **stack_a, t_list **stack_b)
-{
-	int		count_step = 0;
-	int		stack_size_a;
-	int		stack_size_b;
-	t_list	*min_num_a;
-	t_list	*min_num_b;
-	int		i;
-	t_list	*start_lst;
-	int		min_size_a;
-	int		max_size;
-	int		min_size_b;
-	int		count;
-	int		flag;
-	
-	// ft_printf("sort_stack\n");
-	i = 0;
-	count = 0;
-	flag = 1;
-	int	**tab = create_chunk(*stack_a);
-	stack_size_a = ft_lstsize(*stack_a);
-	max_size = stack_size_a - 1;
-	while (1)
-	{
-		flag = 1;
-		start_lst = *stack_a;
-		if (count > tab[i][1])
-			i++;
-		stack_size_b = ft_lstsize(*stack_b);
-		stack_size_a = ft_lstsize(*stack_a);
-		min_num_a = get_index_for_push(*stack_a, tab, i);
-		// ft_printf("index = %d\n", min_num_a->index);
-		min_num_b = get_target_for_b(*stack_b, min_num_a, &flag);
-		min_size_a = ft_lstsize(min_num_a);
-		min_size_b = ft_lstsize(min_num_b);
-		// ft_printf("index b = %d\n", min_num_b->index);
-		// ft_printf("index a = %d\n", min_num_a->index);
-		while (min_size_b >= stack_size_b / 2 && min_size_a >= stack_size_a / 2
-			&& *stack_a && (*stack_a) -> index != min_num_a -> index
-			&& *stack_b && (*stack_b)->index != min_num_b->index)
-			count_step += rr(stack_a, stack_b);
-		while (min_size_b >= stack_size_b / 2 && *stack_b && (*stack_b) -> index != min_num_b -> index)
-			count_step += rotate_stack(stack_b, "rb");
-		while (min_size_a >= stack_size_a / 2 && *stack_a && (*stack_a) -> index != min_num_a -> index)
-		{
-			count_step += rotate_stack(stack_a, "ra");
-		}
-		while (min_size_a <= stack_size_a / 2 && min_size_b <= stack_size_b / 2 
-		&& *stack_b && (*stack_b) -> index != min_num_b -> index 
-			&& *stack_a && (*stack_a) -> index != min_num_a -> index)
-			count_step += rrr(stack_a, stack_b);
-		while (min_size_b <= stack_size_b / 2 && *stack_b && (*stack_b) -> index != min_num_b -> index)
-		{
-			count_step += reverse_rotate_stack(stack_b, "rrb");
-		}
-		while (min_size_a <= stack_size_a / 2 && *stack_a && (*stack_a) -> index != min_num_a -> index)
-		{
-			count_step += reverse_rotate_stack(stack_a, "rra");
-		}
-		count_step += push_first_sec(stack_a, stack_b, "pb");
-		if (!flag)
-		{
-			count_step += rotate_stack(stack_b, "rb");
-		}
-		stack_size_a -= 1;
-		stack_size_b += 1;
-		count++;
-		// ft_printf("stack_size = %d\n", stack_size);
-		if (stack_size_b == 2 && (*stack_b)->index < (*stack_b)->next->index)
-			count_step += swap_b(stack_b);
-		// printf("stack_b\n");
-		// ft_print_list(*stack_b);
-		// printf("stack_a\n");
-		// ft_print_list(*stack_a);
-		if (stack_size_a == 2)
-		{
-			// ft_printf("check\n");
-			count_step += sort_stack_up(stack_a);
-			break;
-		}
-			// printf("stack_a\n");
-			// ft_print_list(*stack_a);
-	}
-	// ft_printf("count_step = %d\n", count_step);
-	// printf("stack_b\n");
-	// ft_print_list(*stack_b);
-	while (*stack_b)
-	{
-		
-		sort_stack_a_by_index(stack_a, stack_b, i++, &count_step);
-	}
-	// ft_printf("sort_stack\n");
-	// free_tab(tab);
-	return (count_step);
-}
 
+// void	sort_with_rotate()
+// {
+// 	while (min_size_b >= stack_size_b / 2 && min_size_a >= stack_size_a / 2
+// 		&& *stack_a && (*stack_a) -> index != min_num_a -> index
+// 		&& *stack_b && (*stack_b)->index != min_num_b->index)
+// 		count_step += rr(stack_a, stack_b);
+// 	while (min_size_b >= stack_size_b / 2 && *stack_b && (*stack_b) -> index != min_num_b -> index)
+// 		count_step += rotate_stack(stack_b, "rb");
+// 	while (min_size_a >= stack_size_a / 2 && *stack_a && (*stack_a) -> index != min_num_a -> index)
+// 	{
+// 		count_step += rotate_stack(stack_a, "ra");
+// 	}
+// }
 
 
 t_list	*get_target_for_b(t_list *stack, t_list	*target, int *flag)
@@ -141,27 +59,18 @@ t_list	*get_target_for_b(t_list *stack, t_list	*target, int *flag)
 	t_list	*near_num;
 	int		b;
 	int		a;
-	// t_list	*max_num;
-	// t_list	*min_num;
-	// ft_printf("stack_b");
-	// ft_print_list(stack);
+	
 	near_num = stack;
 	if (stack && stack_max_num(stack)->index < target->index)
-	{
-		// ft_printf("stack_max_num\n");
 		return (stack_max_num(stack));
-	}
 	if (stack && stack_min_num(stack)->index > target->index)
 	{
 		if (ft_lstsize(stack) > 2)
-		*flag = 0;
-		// ft_printf("stack_min_num\n");
+			*flag = 0;
 		return (stack_max_num(stack));
 	}
 	while (stack && target->index < stack->index)
-	{
 		stack = stack->next;
-	}
 	near_num = stack;
 	while (stack)
 	{
@@ -171,11 +80,6 @@ t_list	*get_target_for_b(t_list *stack, t_list	*target, int *flag)
 			near_num = stack;
 		stack = stack -> next;
 	}
-	// if (near_num && target)
-	// {
-	// 	ft_printf("target->index b = %d\n", target->index);
-	// 	ft_printf("near_num = %d\n", near_num->index);
-	// }
 	return (near_num);
 }
 
@@ -204,13 +108,21 @@ int	check_is_num(char *str)
 {
 	int	i;
 	
-	i = -1;
-	while (str[++i])
-		if(!ft_isdigit((int)str[i]) && str[i] != '-' && str[i] != '+')
+	i = 0;
+	if ((str[i] == '+' || str[i] == '-') && !ft_isdigit(str[i + 1]))
+	{
+		ft_printf("Error: not a number\n");
+		return (0);
+	}
+	while (str[i])
+	{	
+		if(!ft_isdigit((int)str[i]) && str[0] != '-' && str[0] != '+')
 		{
 			ft_printf("Error: not a number\n");
 			return (0);
 		}
+		i++;
+	}
 	return (1);
 }
 
@@ -241,44 +153,112 @@ int	free_tab(int **tab)
 	return (1);
 }
 
-t_list	*fill_list(int ac, char	**str)
+int	is_integer_num(long long num)
 {
-	t_list *stack_a;
-	t_list  *start_a;
-	char	**args;
-	int 	i;
-	int		j;
-	
-	i = 1;
-	j = 0;
-	args = ft_split(str[i], ' ');
-	if (!check_is_num(args[j]) && free_array(args))
-		return (NULL);
-	stack_a = ft_lstnew(ft_atoi(args[j++]));
-	start_a = stack_a;
-	stack_a -> index = -1;
-	while (i++ < ac)
+	if (num <  MIN_INT ||  num > MAX_INT)
 	{
-		while (args[j])
-		{
-			if (!check_is_num(args[j]) && free_array(args))
-				return (NULL);
-			stack_a -> next = ft_lstnew(ft_atoi(args[j]));
-			stack_a -> next -> index = -1;
-			stack_a = stack_a -> next;
-			free(args[j++]);
-		}
-		if (i < ac)
-			args = ft_split(str[i], ' ');
-		j = 0;
-	}
-	free(args);
-	stack_a = NULL;
-	set_index(&start_a);
-	if (!check_is_circulate(start_a) && ft_lstclear(&start_a))
+		ft_printf("Error: out of range");
 		return (0);
-	return (start_a);
+	}
+	return (1);
 }
+
+void	correct_stacks(var *vars, t_list **stack_a, t_list	**stack_b)
+{
+	while (vars->min_size_b >= vars->stack_size_b / 2 && vars->min_size_a >= vars->stack_size_a / 2
+		&& *stack_a && (*stack_a) -> index != vars->min_num_a -> index
+		&& *stack_b && (*stack_b)->index != vars->min_num_b->index)
+		rr(stack_a, stack_b);
+	while (vars->min_size_b >= vars->stack_size_b / 2 && *stack_b && (*stack_b) -> index != vars->min_num_b -> index)
+		rotate_stack(stack_b, "rb");
+	while (vars->min_size_a >= vars->stack_size_a / 2 && *stack_a && (*stack_a) -> index != vars->min_num_a -> index)
+		rotate_stack(stack_a, "ra");
+	while (vars->min_size_a <= vars->stack_size_a / 2 && vars->min_size_b <= vars->stack_size_b / 2 
+		&& *stack_b && (*stack_b) -> index != vars->min_num_b -> index 
+		&& *stack_a && (*stack_a) -> index != vars->min_num_a -> index)
+		rrr(stack_a, stack_b);
+	while (vars->min_size_b <= vars->stack_size_b / 2 && *stack_b && (*stack_b) -> index != vars->min_num_b -> index)
+		reverse_rotate_stack(stack_b, "rrb");
+	while (vars->min_size_a <= vars->stack_size_a / 2 && *stack_a && (*stack_a) -> index != vars->min_num_a -> index)
+		reverse_rotate_stack(stack_a, "rra");
+}
+
+void	initialize_vars(var *vars, t_list *stack_a)
+{
+	vars->count = 0;
+	vars->i = 0;
+	vars->flag = 1;
+	vars->min_num_a = 0;
+	vars->min_num_b = 0;
+	vars->tab = create_chunk(stack_a, 1);
+	vars->stack_size_a = ft_lstsize(stack_a);
+	vars->max_size = vars->stack_size_a - 1;
+	
+}
+
+void	declare_args(var *vars, t_list **stack_a, t_list **stack_b)
+{
+	vars->flag = 1;
+	vars->start_lst = *stack_a;
+	if (vars->count > vars->tab[vars->i][1])
+		vars->i++;
+	vars->stack_size_b = ft_lstsize(*stack_b);
+	vars->stack_size_a = ft_lstsize(*stack_a);
+	vars->min_num_a = get_index_for_push(*stack_a, vars->tab, vars->i);
+	vars->min_num_b = get_target_for_b(*stack_b, vars->min_num_a, &(vars->flag));
+	vars->min_size_a = ft_lstsize(vars->min_num_a);
+	vars->min_size_b = ft_lstsize(vars->min_num_b);
+}
+
+int	sort_stack(t_list **stack_a, t_list **stack_b)
+{
+	int		count_step = 0;
+	var		vars;
+	
+	initialize_vars(&vars, *stack_a);
+	while (1)
+	{
+		declare_args(&vars, stack_a, stack_b);
+		correct_stacks(&vars, stack_a, stack_b);
+		push_first_sec(stack_a, stack_b, "pb");
+		if (!vars.flag)
+			rotate_stack(stack_b, "rb");
+		vars.stack_size_a -= 1;
+		vars.stack_size_b += 1;
+		vars.count++;
+		if (vars.stack_size_b == 2 && (*stack_b)->index < (*stack_b)->next->index)
+			swap_b(stack_b);
+		if (vars.stack_size_a == 2)
+		{
+			sort_stack_up(stack_a);
+			break;
+		}
+	}
+	while (*stack_b)	
+		sort_stack_a_by_index(stack_a, stack_b, vars.i++, &count_step);
+	return (count_step);
+}
+
+// int sort_3(t_list **stack)
+// {
+// 	if ((*stack)->index > (*stack)->next->index && (*stack)->index < ft_lstlast(*stack)->index)
+// 		swap_a(stack);
+// 	else if ((*stack)->index > (*stack)->next->index && (*stack)->index > ft_lstlast(*stack)->index)
+// 		rotate_stack(stack, "ra");
+// 	else if ((*stack)->index < (*stack)->next->index && (*stack)->next->index > ft_lstlast(*stack)->index)
+// 		reverse_rotate_stack(stack, "rra");
+// 	else if ((*stack)->index > (*stack)->next->index && (*stack)->next->index > ft_lstlast(*stack)->index)
+// 	{
+// 		swap_a(stack);
+// 		reverse_rotate_stack(stack, "rra");
+// 	}
+// 	else if ((*stack)->index < (*stack)->next->index && (*stack)->next->index > ft_lstlast(*stack)->index
+// 			&& (*stack)->index < ft_lstlast(*stack))
+// 	{
+// 		swap_a(stack);
+// 		rotate_stack(stack, "ra");
+// 	}
+// }
 
 int main(int ac, char **av)
 {
@@ -293,15 +273,15 @@ int main(int ac, char **av)
 	steps = 0;
 	i = 0;
 	stack_a = fill_list(ac, av);
+	// printf("stack_a\n");m
+	// ft_print_list(stack_a);
 	if (stack_a == NULL)
 		exit (1);
-	// ft_printf("stack_a\n");
-	// ft_print_list(start_a);
-	
+	// if ()
 	steps += sort_stack(&stack_a, &stack_b);
+	// ft_printf("steps = %d\n", steps);
 	// printf("stack_a\n");
 	// ft_print_list(stack_a);
-	// ft_printf("steps = %d\n", steps);
 
 	
 	return (0);

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 14:53:21 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/21 20:19:00 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/03/20 12:32:25 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/03/24 20:41:31 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int rr(t_list **stack_a, t_list **stack_b)
+t_list	*ft_lstlast(t_list *lst)
 {
-    rotate_stack(stack_a, "rr");
-    rotate_stack(stack_b, NULL);
-    return (1);
-}
-
-int rrr(t_list **stack_a, t_list **stack_b)
-{
-    reverse_rotate_stack(stack_a, "rrr");
-    reverse_rotate_stack(stack_b, NULL);
-    return (1);
+	if (lst)
+	{
+		while (lst -> next)
+			lst = lst -> next;
+	}
+	return (lst);
 }

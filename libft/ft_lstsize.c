@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 12:32:25 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/04/29 18:33:09 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/03/20 12:32:41 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/03/22 20:37:46 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	if (lst)
+	int	i;
+
+	i = 0;
+	if (!lst)
+		return (0);
+	while (lst -> next)
 	{
-		while (lst -> next)
-			lst = lst -> next;
+		lst = lst -> next;
+		i++;
 	}
-	return (lst);
+	return (++i);
 }
