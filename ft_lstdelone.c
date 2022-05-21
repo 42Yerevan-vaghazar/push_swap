@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 19:18:59 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/20 18:49:22 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/03/24 20:40:20 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/05/17 17:53:09 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int swap_a(t_list **a)
+void	ft_lstdelone(t_list *lst)
 {
-    t_list  *tmp;
-
-    if (ft_lstsize(*a) < 2)
-        return (0);
-    tmp = (*a);
-    (*a) = (*a) -> next;
-    tmp -> next = (*a) -> next;
-    (*a) -> next = tmp;
-    ft_printf("sa\n");
-    return (1);
+	if (!lst)
+		return ;
+	if (lst)
+		free(lst);
 }

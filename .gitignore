@@ -6,3 +6,4 @@ a.out
 *.log
 .DS_Store
 push_swap_tester/
+test
