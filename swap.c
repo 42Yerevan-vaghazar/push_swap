@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_b.c                                           :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/29 19:20:30 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/20 18:49:20 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/04/28 19:18:59 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/05/22 14:43:21 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int swap_b(t_list **a)
+int swap(t_list **a, char *s)
 {
     t_list  *tmp;
 
@@ -22,6 +22,7 @@ int swap_b(t_list **a)
     (*a) = (*a) -> next;
     tmp -> next = (*a) -> next;
     (*a) -> next = tmp;
-    ft_printf("sb\n");
+    if (s)
+        ft_printf("%s\n", s);
     return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 12:20:35 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/21 20:17:04 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/22 14:43:11 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	sort_stack_up(t_list	**stack)
 	if (!(*stack))
 		return (0);
 	if ((*stack) -> data > ((*stack) -> next) -> data)
-		count_step += swap_a(stack);
+		count_step += swap(stack, "sa");
 	return (count_step);
 }
 

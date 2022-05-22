@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:17:53 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/21 20:24:11 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/22 14:08:13 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,11 @@ typedef struct s_point
 	int		**tab;
 }				var;
 
-int		swap_a(t_list **a);
-int		swap_b(t_list **a);
+int		swap(t_list **a, char *s);
 int		rotate_stack(t_list **lst, char	*str);
 int		reverse_rotate_stack(t_list **lst, char *str);
-int		rr(t_list **stack_a, t_list **stack_b);
-int		rrr(t_list **stack_a, t_list **stack_b);
+int		rr(t_list **stack_a, t_list **stack_b, char *s);
+int		rrr(t_list **stack_a, t_list **stack_b, char *s);
 int    push_first_sec(t_list **a, t_list **b, char *s);
 var		get_targets(t_list	*stack, int **tab, int count);
 int		is_growth_sequence(t_list	*stack);
@@ -65,7 +64,12 @@ t_list	*stack_max_num(t_list *stack);
 t_list	*stack_min_num(t_list *stack);
 int		free_array(char	**str);
 int		free_tab(int	**str);
-int	sort_stack(t_list **stack_a, t_list **stack_b);
+int		sort_stack(t_list **stack_a, t_list **stack_b);
+int 	sort_3(t_list **stack);
+int		sort_5(t_list **stack_a, t_list **stack_b);
+void	initialize_vars(var *vars, t_list *stack_a, int *range);
+char	*get_next_line(int fd);
+
 
 
 
@@ -73,6 +77,7 @@ int	is_integer_num(long long num);
 int	check_is_num(char *str);
 int	check_is_circulate(t_list *stack);
 
+int	free_array(char	**s);
 
 
 #endif

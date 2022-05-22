@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   free_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 19:18:59 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/20 18:49:22 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/05/22 13:41:51 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/05/22 14:43:04 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int swap_a(t_list **a)
+int	free_array(char	**s)
 {
-    t_list  *tmp;
+	int	i;
 
-    if (ft_lstsize(*a) < 2)
-        return (0);
-    tmp = (*a);
-    (*a) = (*a) -> next;
-    tmp -> next = (*a) -> next;
-    (*a) -> next = tmp;
-    ft_printf("sa\n");
-    return (1);
+	i = -1;
+	while (s[++i])
+	{
+		free(s[i]);
+	}
+	
+	free(s);
+	return (1);
+}
+
+int	free_tab(int **tab)
+{
+	int		i;
+
+	i = -1;
+	while (tab[++i])
+	{
+		free(tab[i]);
+	}
+	free(tab);
+	return (1);
 }

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_first_sec.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vaghazar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 19:17:53 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/22 14:43:07 by vaghazar         ###   ########.fr       */
+/*   Created: 2022/02/14 18:08:20 by vaghazar          #+#    #+#             */
+/*   Updated: 2022/02/17 12:47:49 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 
-#include "push_swap.h"
-
-int    push_first_sec(t_list **a, t_list **b, char *s)
+int	ft_strcmp(char *s1, char *s2)
 {
-	(void)s;
-	t_list  *tmp;
-	if (!(*a))
-		return (0);
-	tmp = *a;
-	*a = (*a) -> next;
-	tmp -> next = *b;
-	(*b) = tmp;
-	if (s)
-		ft_printf("%s\n", s);
-	return (1);
+	while (*s1)
+	{
+		if (*s1 != *s2)
+		{
+			break ;
+		}
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
