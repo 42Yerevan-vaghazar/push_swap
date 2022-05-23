@@ -1,9 +1,0 @@
-*.o
-*.a
-a.out
-.vscode
-*.dSYM
-*.log
-.DS_Store
-push_swap_tester/
-test
