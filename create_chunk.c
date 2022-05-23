@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:08:15 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 13:20:44 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:02:11 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	**create_chunk(t_list *stack, int divide)
 		vars.tab[vars.i++][1] = vars.start_chunk + vars.range_chunk;
 		vars.start_chunk = vars.start_chunk + vars.range_chunk;
 	}
-	vars.tab[vars.i][1] = vars.stack_size - 3;
 	vars.tab[vars.i][0] = vars.start_chunk;
+	vars.tab[vars.i][1] = vars.stack_size - 3;
 	return (vars.tab);
 }

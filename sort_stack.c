@@ -6,12 +6,11 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 18:58:26 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 14:02:21 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:02:29 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 static void	correct_stacks(t_var *vars, t_list **stack_a, t_list	**stack_b)
 {
@@ -43,27 +42,24 @@ static void	initialize_vars(t_var *vars, t_list *stack_a, int *range)
 {
 	*range = 5;
 	vars->stack_size_a = ft_lstsize(stack_a);
-	if (vars->stack_size_a <= 450 && vars->stack_size_a > 200)
-		while (vars->stack_size_a / 3 > 0)
+	if (vars->stack_size_a <= 400)
+			*range = 5;
+	else if (vars->stack_size_a >= 400 && vars->stack_size_a < 750)
+		*range = 13;
+	else if (vars->stack_size_a >= 750)
+	{
+		while (vars->stack_size_a > 0)
 		{
-			vars->stack_size_a = vars->stack_size_a / 3;
+			vars->stack_size_a = vars->stack_size_a - 50;
 			*range += 1;
 		}
-	else if (vars->stack_size_a <= 600 && vars->stack_size_a > 450)
-		*range = 14;
-	else if (vars->stack_size_a >= 600)
-		while (vars->stack_size_a / 50 > 0)
-		{
-			vars->stack_size_a = vars->stack_size_a / 50;
-			*range += 1;
-		}
+	}
 	vars->count = 0;
 	vars->i = 0;
 	vars->flag = 1;
 	vars->min_num_a = 0;
 	vars->min_num_b = 0;
-	// ft_printf("range = %d\n", *range);
-	vars->tab = create_chunk(stack_a, 14);
+	vars->tab = create_chunk(stack_a, *range);
 	vars->stack_size_a = ft_lstsize(stack_a);
 	vars->max_size = vars->stack_size_a - 1;
 }

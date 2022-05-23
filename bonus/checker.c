@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 11:24:41 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 13:55:08 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:00:58 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,10 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	*stack_b;
 	char	*instruction;
-	int		i;
 
 	if (ac < 2)
 		return (0);
 	stack_b = NULL;
-	i = 0;
 	stack_a = fill_list(ac, av);
 	if (stack_a == NULL || (ft_lstsize(stack_a) == 1 && ft_printf("OK\n")))
 		exit (1);
@@ -61,11 +59,13 @@ int	main(int ac, char **av)
 		if (!instruction)
 			break ;
 		if (!put_instruction(&stack_a, &stack_b, instruction))
-			exit (0);
+			exit (1);
 	}
 	if (is_growth_sequence(stack_a) && stack_b == NULL)
 		ft_printf("OK\n");
 	else
-		ft_printf("KO");
+		ft_printf("KO\n");
+	free_lst(&stack_a);
+	free_lst(&stack_b);
 	return (0);
 }

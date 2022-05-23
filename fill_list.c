@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 18:03:31 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 13:54:21 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:55:45 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int	fill_list_helper(t_list **stack_a, char **args, int ac, char **str)
 	while (++vars.i < ac)
 	{
 		args = ft_split(str[vars.i], ' ');
+		if (args[0] == '\0' && free_array(args) && ft_printf("Error\n"))
+			exit(1);
 		while (args[vars.j] || !free_array(args))
 		{
 			if ((!check_is_num(args[vars.j])

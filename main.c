@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:26:21 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 13:59:57 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:33:04 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	// int		i;
 
 	if (ac < 2)
 		return (0);
@@ -81,11 +80,6 @@ int	main(int ac, char **av)
 		sort_5(&stack_a, &stack_b);
 	else
 		sort_stack(&stack_a, &stack_b);
-	// printf("stack_a\n");
-	// ft_print_list(stack_a);
-	// printf("ra\n");
-	// free_lst(&stack_a);
 	free_lst(&stack_a);
-	
 	return (0);
 }
