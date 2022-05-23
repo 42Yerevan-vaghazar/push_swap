@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:11:55 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/22 14:42:49 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:33:15 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_is_circulate(t_list *stack)
 {
 	t_list	*next_node;
-	
+
 	while (stack -> next)
 	{
 		next_node = stack -> next;
@@ -36,7 +36,7 @@ int	check_is_circulate(t_list *stack)
 int	check_is_num(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	if ((str[i] == '+' || str[i] == '-') && !ft_isdigit(str[i + 1]))
 	{
@@ -45,7 +45,7 @@ int	check_is_num(char *str)
 	}
 	while (str[i])
 	{	
-		if(!ft_isdigit((int)str[i]) && str[0] != '-' && str[0] != '+')
+		if (!ft_isdigit((int)str[i]) && str[0] != '-' && str[0] != '+')
 		{
 			ft_printf("Error: not a number\n");
 			return (0);
@@ -57,7 +57,7 @@ int	check_is_num(char *str)
 
 int	is_integer_num(long long num)
 {
-	if (num <  MIN_INT ||  num > MAX_INT)
+	if (num < MIN_INT || num > MAX_INT)
 	{
 		ft_printf("Error: out of range");
 		return (0);

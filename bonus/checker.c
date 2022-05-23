@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 11:24:41 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/22 15:01:44 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:55:08 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,28 @@ int	put_instruction(t_list **stack_a, t_list **stack_b, char *instr)
 		rrr(stack_a, stack_b, NULL);
 	else if (ft_printf("Error: wrong instruction\n"))
 		return (0);
-	// else if (write(2, "Error: wrong instruction\n", 50))
-	// 	return (0);
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_list *stack_a;
-	t_list *stack_b;
-	char    *instruction;
-	int 	i;
-	
+	t_list	*stack_a;
+	t_list	*stack_b;
+	char	*instruction;
+	int		i;
+
 	if (ac < 2)
 		return (0);
 	stack_b = NULL;
 	i = 0;
 	stack_a = fill_list(ac, av);
-	if (stack_a == NULL)
+	if (stack_a == NULL || (ft_lstsize(stack_a) == 1 && ft_printf("OK\n")))
 		exit (1);
 	while (1)
 	{
 		instruction = get_next_line(0);
 		if (!instruction)
-			break;
+			break ;
 		if (!put_instruction(&stack_a, &stack_b, instruction))
 			exit (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:42:06 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/21 17:48:30 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:06:13 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int data)
 	if (!ptr)
 		return (0);
 	ptr -> data = data;
+	ptr -> index = -1;
 	ptr -> next = NULL;
 	return (ptr);
 }

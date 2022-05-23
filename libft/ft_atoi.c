@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:15:34 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/21 18:43:41 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:23:33 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 long long	ft_atoi(const char *nptr)
 {
 	long long	num;
-	int	temp;
-
+	int			temp;
 
 	num = 0;
 	temp = 1;
@@ -39,4 +38,3 @@ long long	ft_atoi(const char *nptr)
 	}
 	return (num * temp);
 }
-

@@ -6,37 +6,51 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 18:03:31 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/22 15:41:59 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:54:21 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int fill_list_helper(t_list **stack_a, char  **args, int ac, char **str)
+static void	initilizer(t_var *vars)
 {
-	t_list  *start_a;
-	int 	i;
-	int		j;
-	
-	i = 1;
-	j = 0;
-	(*stack_a) = ft_lstnew(ft_atoi(args[j++]));
-	start_a = (*stack_a);
-	(*stack_a) -> index = -1;
-	while (i++ < ac)
+	vars->i = 0;
+	vars->j = 0;
+	vars->flag = 0;
+}
+
+static void	helper(t_var *vars, t_list **stack_a, char **args, t_list **start_a)
+{
+	if (!vars->flag++)
+	{	
+		(*stack_a) = ft_lstnew(ft_atoi(args[vars->j++]));
+		*start_a = (*stack_a);
+	}
+	else
 	{
-		while (args[j])
+		(*stack_a)->next = ft_lstnew(ft_atoi(args[vars->j++]));
+		(*stack_a) = (*stack_a)->next;
+	}
+}
+
+static int	fill_list_helper(t_list **stack_a, char **args, int ac, char **str)
+{
+	t_list	*start_a;
+	t_var	vars;
+
+	initilizer(&vars);
+	while (++vars.i < ac)
+	{
+		args = ft_split(str[vars.i], ' ');
+		while (args[vars.j] || !free_array(args))
 		{
-			if ((!check_is_num(args[j]) || !is_integer_num(ft_atoi(args[j])))/* && free_array(args)*/)
+			if ((!check_is_num(args[vars.j])
+					|| !is_integer_num(ft_atoi(args[vars.j])))
+				&& free_array(args))
 				return (0);
-			(*stack_a) -> next = ft_lstnew(ft_atoi(args[j]));
-			(*stack_a) -> next -> index = -1;
-			(*stack_a) = (*stack_a) -> next;
-			free(args[j++]);
+			helper(&vars, stack_a, args, &start_a);
 		}
-		if (i < ac)
-			args = ft_split(str[i], ' ');
-		j = 0;
+		vars.j = 0;
 	}
 	(*stack_a) = NULL;
 	(*stack_a) = start_a;
@@ -45,17 +59,14 @@ int fill_list_helper(t_list **stack_a, char  **args, int ac, char **str)
 
 t_list	*fill_list(int ac, char	**str)
 {
-	t_list  *stack_a;
+	t_list	*stack_a;
 	char	**args;
-	
-	args = ft_split(str[1], ' ');
-	if (!check_is_num(args[0]) && free_array(args))
-		return (NULL);
-	if (!fill_list_helper(&stack_a, args, ac,  str))
+
+	args = NULL;
+	if (!fill_list_helper(&stack_a, args, ac, str) && free_lst(&stack_a))
 		return (0);
-	free(args);
 	set_index(&stack_a);
-	if (!check_is_circulate(stack_a) /*&& ft_lstclear(&start_a)*/)
+	if (!check_is_circulate(stack_a) && free_lst(&stack_a))
 		return (0);
 	return (stack_a);
 }
