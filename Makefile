@@ -7,7 +7,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 
 SRCS = $(wildcard *.c)
 
-SRCS_BONUS = ./bonus/checker.c
+SRCS_BONUS = $(wildcard ./bonus/*.c)
 
 SRCS_BONUS += $(filter-out main.c,$(SRCS))
 
@@ -23,9 +23,6 @@ FT_PRINTF_DIR = ft_printf
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-
-.c.o :
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 all:  $(NAME)
 
