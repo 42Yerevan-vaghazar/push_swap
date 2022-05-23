@@ -19,7 +19,7 @@ OBJS_BONUS = $(patsubst %.c, %.o, $(SRCS_BONUS))
 
 RM = rm -f
 
-FT_PRINTF_DIR = ft_printf
+FT_PRINTF_DIR = ft_printff
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a

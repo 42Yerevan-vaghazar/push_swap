@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:17:53 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 14:02:06 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:20:00 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include "./libft/libft.h"
-# include "./ft_printf/ft_printf.h"
+# include "./ft_printff/ft_printf.h"
 
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
