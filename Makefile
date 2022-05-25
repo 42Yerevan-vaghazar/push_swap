@@ -9,9 +9,7 @@ SRCS = $(wildcard *.c)
 
 SRCS_BONUS = $(wildcard ./bonus/*.c)
 
-SRCS_BONUS += $(filter-out main.c,$(SRCS))
-
-LIBS = $(shell find . -name '*.a')
+SRCS_BONUS += $(filter-out main.c, $(SRCS))
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
@@ -24,10 +22,12 @@ FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
+LINKERS = -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf
+
 all:  $(NAME)
 
 $(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS)
-	$(CC) $(CFLAGS) $(LIBS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LINKERS)
 	
 $(LIBFT):
 	@make --no-print-directory -C $(LIBFT_DIR)
@@ -35,14 +35,15 @@ $(LIBFT):
 $(FT_PRINTF):
 	@make --no-print-directory -C $(FT_PRINTF_DIR)
 
-bonus: $(OBJS_BONUS) $(LIBFT) $(FT_PRINTF) $(NAME)
-		$(CC) $(CFLAGS) $(LIBS) $(OBJS_BONUS) -o $(BONUS)
-		
+bonus:	$(BONUS)
+
+$(BONUS): $(LIBFT) $(FT_PRINTF) $(OBJS_BONUS)
+	$(CC) $(CFLAGS) -o $(BONUS) $(OBJS_BONUS) $(LINKERS)
+
 clean:
 	@make --no-print-directory clean -C $(LIBFT_DIR)
 	@make --no-print-directory clean -C $(FT_PRINTF_DIR)
-	$(RM) $(OBJS)
-	$(RM) ./bonus/*.o
+	$(RM) $(OBJS_BONUS) $(OBJS)
 
 fclean: clean
 	@make --no-print-directory fclean -C $(LIBFT_DIR)

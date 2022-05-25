@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 11:24:41 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 15:00:58 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:37:14 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	stack_b = NULL;
+	stack_a = NULL;
 	stack_a = fill_list(ac, av);
 	if (stack_a == NULL || (ft_lstsize(stack_a) == 1 && ft_printf("OK\n")))
 		exit (1);

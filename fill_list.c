@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 18:03:31 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 14:55:45 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:17:25 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_list	*fill_list(int ac, char	**str)
 	char	**args;
 
 	args = NULL;
+	stack_a = NULL;
 	if (!fill_list_helper(&stack_a, args, ac, str) && free_lst(&stack_a))
 		return (0);
 	set_index(&stack_a);

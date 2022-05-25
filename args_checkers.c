@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:11:55 by vaghazar          #+#    #+#             */
-/*   Updated: 2022/05/23 12:33:15 by vaghazar         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:33:11 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	check_is_num(char *str)
 	}
 	while (str[i])
 	{	
-		if (!ft_isdigit((int)str[i]) && str[0] != '-' && str[0] != '+')
+		if ((!ft_isdigit((int)str[i]) && str[i] != '-' && str[i] != '+')
+			|| (!ft_isdigit((int)str[i]) && i != 0))
 		{
 			ft_printf("Error: not a number\n");
 			return (0);
